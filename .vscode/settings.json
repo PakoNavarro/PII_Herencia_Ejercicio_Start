@@ -1,0 +1,29 @@
+{
+    "cSpell.enabled": true,
+    "cSpell.language": "en,es",
+    "cSpell.words": [
+        "buildtransitive",
+        "contentfiles",
+        "coreclr",
+        "dotnet",
+        "Doxify",
+        "Doxyfile",
+        "github",
+        "LINQ",
+        "Liskov",
+        "msbuild",
+        "nunit",
+        "preconfiguradas",
+        "Pseudocódigo",
+        "ridesharing",
+        "sobreescritura",
+        "stylecop"
+    ],
+    "cSpell.ignorePaths": [
+        "/.gitignore",
+    ],
+    "dotnet.defaultSolution": "UcuRide.sln", // ← Renombrar para que coincida con la solución
+    "github.copilot.enable": {
+        "*": false
+    },
+}
