@@ -72,6 +72,21 @@ namespace Ucu.Poo.RideShare
             rideShare.Add(pasajero3)
             Se publica en Discord nuevo registro de pasajero!
             */
+            Console.WriteLine("Creando usuarios de ejemplo...");
+
+            PoolDriver conductorPool1 = new PoolDriver("Ana", "Gómez", "87654321", "dan.jpg", 4.9, "Chevrolet Onix", "Manejo tranquilo, ideal para viajes largos.", 3);
+
+            Passenger pasajero1 = new Passenger("Lucía", "Fernández", "11223344", "rick.jpg", 5.0);
+
+            Console.WriteLine("Publicando conductor pool...");
+            await discord.SendImageAsync(channelId, conductorPool1.ProfilePhoto,
+            $"🚐 ¡Nuevo conductor pool en UcuRide! {conductorPool1.Name} {conductorPool1.LastName} ({conductorPool1.Car}). {conductorPool1.Bio} Capacidad: {conductorPool1.MaxCapacity} pasajeros.");
+
+            Console.WriteLine("Publicando pasajero...");
+            await discord.SendImageAsync(channelId, pasajero1.ProfilePhoto,
+            $"🧍 ¡Nuevo pasajero en UcuRide! {pasajero1.Name} {pasajero1.LastName}");
+
+            Console.WriteLine("Mensajes enviados.");
         }
     }
 }
