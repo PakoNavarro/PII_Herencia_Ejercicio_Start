@@ -81,8 +81,9 @@ namespace Ucu.Poo.Discord
             if (channel == null)
                 throw new ArgumentException("No se encontró el canal con ese ID.");
 
-            await using var stream = File.OpenRead(rutaArchivo);
             var fileName = Path.GetFileName(rutaArchivo);
+            byte[] bytes = await File.ReadAllBytesAsync(rutaArchivo);
+            using var stream = new MemoryStream(bytes);
 
             await channel.SendFileAsync(stream, fileName, mensajeOpcional ?? string.Empty);
         }

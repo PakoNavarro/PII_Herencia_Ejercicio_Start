@@ -38,55 +38,33 @@ namespace Ucu.Poo.RideShare
 
             DiscordClient discord = new DiscordClient();
 
-            Console.WriteLine("Conectando con Discord...");
             await discord.LoginAsync(botToken);
-            await discord.SendMessageAsync(channelId, "¡Hola desde C#!");
-            await discord.SendImageAsync(channelId, "bill.jpg", "Mira esta imagen");
             Console.WriteLine("Mensajes enviados.");
 
-            /*
-            En éste método deberás mostrar un ejemplo de funcionamiento de tu
-            programa. A continuación te planteamos un ejemplo de como hacerlo.
-            Esto no significa que te limites a hacer solamente esto, debes
-            pensar en grande!
-
-            User pasajero1 = ...
-            User pasajero2 = ...
-            User pasajero3 = ...
-            User conductor1 = ...
-            User conductorPool1 = ...
-            UcuRideShare rideShare = new UcuRideShare()
-
-            rideShare.Add(conductor1)
-            Se publica en Discord un nuevo conductor!
-
-            rideShare.Add(conductorPool1)
-            Se publica en Discord un nuevo conductor!
-
-            rideShare.Add(pasajero1)
-            Se publica en Discord nuevo registro de pasajero!
-
-            rideShare.Add(pasajero2)
-            Se publica en Discord nuevo registro de pasajero!
-
-            rideShare.Add(pasajero3)
-            Se publica en Discord nuevo registro de pasajero!
-            */
             Console.WriteLine("Creando usuarios de ejemplo...");
 
             PoolDriver conductorPool1 = new PoolDriver("Ana", "Gómez", "87654321", "dan.jpg", 4.9, "Chevrolet Onix", "Manejo tranquilo, ideal para viajes largos.", 3);
+            PoolDriver conductorPool2 = new PoolDriver("Pepe", "Gómez", "67676767", "bill.jpg", 4.9, "BMW M3", "Manejo rapido, ideal para viajes cortos.", 7);
 
             Passenger pasajero1 = new Passenger("Lucía", "Fernández", "11223344", "rick.jpg", 5.0);
+
 
             Console.WriteLine("Publicando conductor pool...");
             await discord.SendImageAsync(channelId, conductorPool1.ProfilePhoto,
             $"🚐 ¡Nuevo conductor pool en UcuRide! {conductorPool1.Name} {conductorPool1.LastName} ({conductorPool1.Car}). {conductorPool1.Bio} Capacidad: {conductorPool1.MaxCapacity} pasajeros.");
 
+            Console.WriteLine("Publicando conductor pool...");
+            await discord.SendImageAsync(channelId, conductorPool2.ProfilePhoto,
+            $"🚐 ¡Nuevo conductor pool en UcuRide! {conductorPool2.Name} {conductorPool2.LastName} ({conductorPool2.Car}). {conductorPool2.Bio} Capacidad: {conductorPool2.MaxCapacity} pasajeros.");
+            
             Console.WriteLine("Publicando pasajero...");
             await discord.SendImageAsync(channelId, pasajero1.ProfilePhoto,
             $"🧍 ¡Nuevo pasajero en UcuRide! {pasajero1.Name} {pasajero1.LastName}");
+
+
 
             Console.WriteLine("Mensajes enviados.");
         }
     }
 }
+
